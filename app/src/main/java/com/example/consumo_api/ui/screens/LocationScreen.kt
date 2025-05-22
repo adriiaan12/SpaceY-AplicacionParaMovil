@@ -15,10 +15,10 @@ import androidx.compose.ui.graphics.Color
 @Composable
 fun PantallaLocalizacion() {
     val scrollState = rememberScrollState()
-    val plazaFragela = LatLng(36.5275, -6.2886)
+    val estacion= LatLng(5.167713, -52.683994)
 
     val cameraPositionState = rememberCameraPositionState {
-        position = com.google.android.gms.maps.model.CameraPosition.fromLatLngZoom(plazaFragela, 16f)
+        position = com.google.android.gms.maps.model.CameraPosition.fromLatLngZoom(estacion, 16f)
     }
 
     Column(
@@ -29,7 +29,7 @@ fun PantallaLocalizacion() {
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            text = "Localización - Plaza Fragela 1",
+            text = "Localización -  Lanzamiento",
             style = MaterialTheme.typography.headlineMedium
         )
 
@@ -44,32 +44,19 @@ fun PantallaLocalizacion() {
                     style = MaterialTheme.typography.titleMedium
                 )
                 Spacer(Modifier.height(8.dp))
-                Text("Plaza Fragela está en el centro histórico de Cádiz, cerca del Gran Teatro Falla y la playa La Caleta.")
-                Text("Zona peatonal con ambiente cultural, ideal para pasear.")
+                Text("El Centro Espacial de Guayana (CSG) es el puerto espacial europeo situado en Kourou, en la Guayana Francesa, " +
+                        "un territorio de ultramar de Francia en América del Sur. Inaugurado en 1968, es operado por el Centro Nacional de " +
+                        "Estudios Espaciales (CNES) en colaboración con la Agencia Espacial Europea (ESA) y Arianespace.")
+
             }
         }
 
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-            colors = CardDefaults.cardColors(containerColor = androidx.compose.ui.graphics.Color.LightGray)
-        ) {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text(
-                    text = "Medios de transporte disponibles",
-                    style = MaterialTheme.typography.titleMedium
-                )
-                Spacer(Modifier.height(8.dp))
-                Text("TextoTextoTextoTextoTextoTexto")
-                Text("TextoTextoTextoTextoTextoTextoTexto")
-                Text("TextoTextoTextoTextoTextoTextoTextoTexto")
-                Text("TextoTextoTextoTextoTextoTextoTextoTextoTexto")
-            }
-        }
+
 
         Text(
             text = "Mapa interactivo",
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
+            color = Color.White
         )
 
         Card(
@@ -84,9 +71,9 @@ fun PantallaLocalizacion() {
                 cameraPositionState = cameraPositionState
             ) {
                 Marker(
-                    state = MarkerState(position = plazaFragela),
-                    title = "Plaza Fragela 1",
-                    snippet = "Centro histórico de Cádiz"
+                    state = MarkerState(position = estacion),
+                    title = "Lanzamiento",
+
                 )
             }
         }

@@ -10,6 +10,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.NavigationDrawerItemDefaults
@@ -93,7 +95,7 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
                 label = { Text("Salas") },
                 selected = false,
                 onClick = { onDestinationClicked("Sala") },
-                icon = { Icon(Icons.Default.Person, contentDescription = "Salas") },
+                icon = { Icon(Icons.Default.Info, contentDescription = "Salas") },
                 colors = NavigationDrawerItemDefaults.colors(
                     selectedContainerColor = Pink80, //MaterialTheme.colorScheme.primary.copy(alpha = 0.25f),
                     unselectedContainerColor = Black,  //MaterialTheme.colorScheme.surface,
@@ -109,7 +111,7 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
                 label = { Text("Ubicacion") },
                 selected = false,
                 onClick = { onDestinationClicked("Localizacion") },
-                icon = { Icon(Icons.Default.Person, contentDescription = "Ubicacion") },
+                icon = { Icon(Icons.Default.LocationOn, contentDescription = "Ubicacion") },
                 colors = NavigationDrawerItemDefaults.colors(
                     selectedContainerColor = Pink80, //MaterialTheme.colorScheme.primary.copy(alpha = 0.25f),
                     unselectedContainerColor = Black,  //MaterialTheme.colorScheme.surface,
