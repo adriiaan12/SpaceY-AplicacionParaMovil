@@ -81,16 +81,7 @@ fun SalaScreen() {
 
         Scaffold(
             //El codigo de aqui abajo sirve para que ponga salas y la barrita esta blurreada
-            topBar = {
-                TopAppBar(
-                    title = { Text("Salas") },
-                    modifier = Modifier.height(48.dp),
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = Color.Black.copy(alpha = 0.5f), // Transparente pero visible
-                        titleContentColor = Color.White
-                    )
-                )
-            },
+
             containerColor = Color.Transparent // Hace que el fondo del Scaffold sea transparente
         ) { paddingValues ->
             LazyColumn(

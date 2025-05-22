@@ -44,50 +44,36 @@ import com.example.consumo_api.models.ViewModel_class
 
 
 @OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier.fillMaxSize()
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(2.dp),
+        verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.fondo),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
-        )
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(2.dp), // Mantén el padding general
-
-            verticalArrangement = Arrangement.SpaceBetween // Coloca el primero y el último en los extremos
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.logos),
-                    contentDescription = "Logo de la aplicación",
-                    modifier = Modifier
-                        .size(160.dp)
-                        .padding(bottom = 80.dp)
-                )
-            }
-
-            // Este Spacer ocupará todo el espacio restante, empujando el texto hacia abajo
-            Spacer(modifier = Modifier.weight(0.5f))
-            // Texto en la parte inferior
-            Text(
-                text = "Adrián Sánchez Álvarez\n" +
-                        "Manuel Saucedo Gonzalez\n" +
-                        "Yeray Via Alba",
-                color = Color.White,
-                style = MaterialTheme.typography.headlineMedium.copy(fontSize = 16.sp, lineHeight = 16.sp),
-                textAlign = TextAlign.Start
+            Image(
+                painter = painterResource(id = R.drawable.logos),
+                contentDescription = "Logo de la aplicación",
+                modifier = Modifier
+                    .size(160.dp)
+                    .padding(bottom = 80.dp)
             )
         }
+
+        Spacer(modifier = Modifier.weight(0.5f))
+
+        Text(
+            text = "Adrián Sánchez Álvarez\nManuel Saucedo Gonzalez\nYeray Via Alba",
+            color = Color.White,
+            style = MaterialTheme.typography.headlineMedium.copy(fontSize = 16.sp, lineHeight = 16.sp),
+            textAlign = TextAlign.Start
+        )
     }
 }
 

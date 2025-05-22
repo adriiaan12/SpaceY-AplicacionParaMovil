@@ -34,6 +34,9 @@ import java.util.Calendar
 import android.app.DatePickerDialog
 import androidx.compose.foundation.clickable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
+import androidx.compose.foundation.background
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -56,13 +59,22 @@ fun TaskScreen(viewModel: ViewModel_class) {
             viewModel.onFechainiChange("%02d/%02d/%04d".format(d, m + 1, y))
         }, year, month, day)
     }
+    val datePickerDialog2 = remember {
+        DatePickerDialog(context, { _, y, m, d ->
+            viewModel.onFechafinChange("%02d/%02d/%04d".format(d, m + 1, y))
+        }, year, month, day)
+    }
+
+
 
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(Color.Black)
             .padding(16.dp).verticalScroll(scrollState),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
+
         TextField(
             value = uiState.nombre,
             onValueChange = viewModel::onNombreChange,
@@ -125,7 +137,7 @@ fun TaskScreen(viewModel: ViewModel_class) {
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
-                    datePickerDialog.show()
+                    datePickerDialog2.show()
                 }
         )
         ExposedDropdownMenuBox(
@@ -161,8 +173,8 @@ fun TaskScreen(viewModel: ViewModel_class) {
             }
         }
         ExposedDropdownMenuBox(
-            expanded = expanded,
-            onExpandedChange = { expanded = !expanded }
+            expanded = expanded2,
+            onExpandedChange = { expanded2 = !expanded2 }
         ) {
             TextField(
                 readOnly = true,
@@ -170,7 +182,7 @@ fun TaskScreen(viewModel: ViewModel_class) {
                 onValueChange = {},
                 label = { Text("Tipo de Plan") },
                 trailingIcon = {
-                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded2)
                 },
                 colors = ExposedDropdownMenuDefaults.textFieldColors(),
                 modifier = Modifier
@@ -178,15 +190,15 @@ fun TaskScreen(viewModel: ViewModel_class) {
                     .fillMaxWidth()
             )
             ExposedDropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false }
+                expanded = expanded2,
+                onDismissRequest = { expanded2 = false }
             ) {
                 opcionesRol2.forEach { opcion ->
                     DropdownMenuItem(
                         text = { Text(opcion) },
                         onClick = {
                             viewModel.onPlanChange(opcion)
-                            expanded = false
+                            expanded2 = false
                         }
                     )
                 }

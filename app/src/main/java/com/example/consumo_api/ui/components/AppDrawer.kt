@@ -44,12 +44,12 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
                 onClick = { onDestinationClicked("home") },
                 icon = { Icon(Icons.Default.Home, contentDescription = "Inicio") },
                 colors = NavigationDrawerItemDefaults.colors(
-                    selectedContainerColor = Black,
-                    unselectedContainerColor = Pink80,
+                    selectedContainerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.12f),
+                    unselectedContainerColor = Black,
                     selectedIconColor = MaterialTheme.colorScheme.contentColorFor(backgroundColor = MaterialTheme.colorScheme.primary),
                     unselectedIconColor = MaterialTheme.colorScheme.contentColorFor(backgroundColor = MaterialTheme.colorScheme.primary),
-                    selectedTextColor = MaterialTheme.colorScheme.primary,
-                    unselectedTextColor = MaterialTheme.colorScheme.onSurface
+                    selectedTextColor = White,
+                    unselectedTextColor = White
                 )
             )
             NavigationDrawerItem(
@@ -59,12 +59,12 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
                 icon = { Icon(Icons.Default.DateRange, contentDescription = "Reservas") },
                 colors = NavigationDrawerItemDefaults.colors(
                     selectedContainerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.12f),
-                    unselectedContainerColor = MaterialTheme.colorScheme.surface,
+                    unselectedContainerColor = Black,
                     selectedIconColor = MaterialTheme.colorScheme.contentColorFor(backgroundColor = MaterialTheme.colorScheme.primary),
                     // Dame el color de contenido (texto/ícono) que combine con primary”.
                     unselectedIconColor = MaterialTheme.colorScheme.contentColorFor(backgroundColor = MaterialTheme.colorScheme.primary),
-                    selectedTextColor = MaterialTheme.colorScheme.primary,
-                    unselectedTextColor = MaterialTheme.colorScheme.onSurface
+                    selectedTextColor = White,
+                    unselectedTextColor = White
                 )
             )
 
@@ -80,13 +80,13 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
                 icon = { Icon(Icons.Default.Person, contentDescription = "Perfil") },
                 colors = NavigationDrawerItemDefaults.colors(
                     selectedContainerColor = Pink80, //MaterialTheme.colorScheme.primary.copy(alpha = 0.25f),
-                    unselectedContainerColor = MaterialTheme.colorScheme.surface,  //MaterialTheme.colorScheme.surface,
+                    unselectedContainerColor = Black,  //MaterialTheme.colorScheme.surface,
                     selectedIconColor = MaterialTheme.colorScheme.contentColorFor(backgroundColor = MaterialTheme.colorScheme.primary),
                     // Dame el color de contenido (texto/ícono) que combine con primary”.
                     unselectedIconColor = MaterialTheme.colorScheme.contentColorFor(backgroundColor = MaterialTheme.colorScheme.primary),
                     selectedTextColor = MaterialTheme.colorScheme.primary,
-                    unselectedTextColor = MaterialTheme.colorScheme.onSurface
-                ), modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+                    unselectedTextColor = White
+                )
             )
 
             NavigationDrawerItem(
@@ -96,13 +96,13 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
                 icon = { Icon(Icons.Default.Person, contentDescription = "Salas") },
                 colors = NavigationDrawerItemDefaults.colors(
                     selectedContainerColor = Pink80, //MaterialTheme.colorScheme.primary.copy(alpha = 0.25f),
-                    unselectedContainerColor = MaterialTheme.colorScheme.surface,  //MaterialTheme.colorScheme.surface,
+                    unselectedContainerColor = Black,  //MaterialTheme.colorScheme.surface,
                     selectedIconColor = MaterialTheme.colorScheme.contentColorFor(backgroundColor = MaterialTheme.colorScheme.primary),
                     // Dame el color de contenido (texto/ícono) que combine con primary”.
                     unselectedIconColor = MaterialTheme.colorScheme.contentColorFor(backgroundColor = MaterialTheme.colorScheme.primary),
                     selectedTextColor = MaterialTheme.colorScheme.primary,
-                    unselectedTextColor = MaterialTheme.colorScheme.onSurface
-                ), modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+                    unselectedTextColor = White
+                )
             )
         }
     }
