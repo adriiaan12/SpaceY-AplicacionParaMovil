@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitClient {
 
     // 10.0.2.2 es como el emulador de Android accede a tu localhost.
-    private const val BASE_URL = "http://10.0.2.2:3000/" // localhost para emulador
+    private const val BASE_URL = "http://10.0.2.2:3000/api/" // localhost para emulador
 
     // Esto crea una instancia de Retrofit lista para usarse:
     val api: ViajeApiService by lazy {

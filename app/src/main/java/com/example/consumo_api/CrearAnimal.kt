@@ -3,6 +3,7 @@ package com.example.consumo_api
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.OutlinedTextField
@@ -18,6 +19,9 @@ import com.example.consumo_api.modules.Animal
 import com.example.consumo_api.modules.Viaje
 import com.example.consumo_api.modules.ViajeViewModel
 
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+
 
 @Composable
 fun ViajeCreateScreen(viewModel: ViajeViewModel) {
@@ -30,11 +34,13 @@ fun ViajeCreateScreen(viewModel: ViajeViewModel) {
     var npersonas by remember { mutableStateOf("") }
     var embarazada by remember { mutableStateOf(false) }
 
+    val scrollState = rememberScrollState()
 
 
 
 
-    Column {
+
+    Column(modifier = androidx.compose.ui.Modifier.verticalScroll(scrollState)) {
         OutlinedTextField(value = nombre, onValueChange = { nombre = it }, label = { Text("Nombre") })
         OutlinedTextField(value = apellido, onValueChange = { apellido = it }, label = { Text("Apellido") })
         OutlinedTextField(value = correo, onValueChange = { correo = it }, label = { Text("correo") })
@@ -46,9 +52,10 @@ fun ViajeCreateScreen(viewModel: ViajeViewModel) {
             Checkbox(checked = embarazada, onCheckedChange = { embarazada = it })
             Text("En peligro")
         }
+
         Button(onClick = {
 
-                viewModel.agregarViaje(Viaje(0,nombre,apellido,correo,tlf,npersonas.toInt(),apellido
+                viewModel.agregarViaje(Viaje(0,nombre,apellido,correo,tlf,npersonas.toIntOrNull() ?: 0,apellido
                     ,apellido,fechaini,fechafin,embarazada))
 
         }) {
