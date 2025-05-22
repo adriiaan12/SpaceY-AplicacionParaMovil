@@ -104,6 +104,22 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
                     unselectedTextColor = White
                 )
             )
+
+            NavigationDrawerItem(
+                label = { Text("Ubicacion") },
+                selected = false,
+                onClick = { onDestinationClicked("Localizacion") },
+                icon = { Icon(Icons.Default.Person, contentDescription = "Ubicacion") },
+                colors = NavigationDrawerItemDefaults.colors(
+                    selectedContainerColor = Pink80, //MaterialTheme.colorScheme.primary.copy(alpha = 0.25f),
+                    unselectedContainerColor = Black,  //MaterialTheme.colorScheme.surface,
+                    selectedIconColor = MaterialTheme.colorScheme.contentColorFor(backgroundColor = MaterialTheme.colorScheme.primary),
+                    // Dame el color de contenido (texto/ícono) que combine con primary”.
+                    unselectedIconColor = MaterialTheme.colorScheme.contentColorFor(backgroundColor = MaterialTheme.colorScheme.primary),
+                    selectedTextColor = MaterialTheme.colorScheme.primary,
+                    unselectedTextColor = White
+                )
+            )
         }
     }
 }

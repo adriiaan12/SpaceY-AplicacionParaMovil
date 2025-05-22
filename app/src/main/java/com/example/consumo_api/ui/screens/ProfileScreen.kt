@@ -1,4 +1,4 @@
-package com.example.consumo_api.ui.screens
+package com.example.consumo_api.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -15,12 +15,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.consumo_api.modules.ViajeViewModel
 import com.example.consumo_api.ViajeDetailScreen
-import com.example.consumo_api.ListaViajes
+import com.example.consumo_api.ui.screens.ListaViajes
 import com.example.consumo_api.ViajeCreateScreen
 import com.example.consumo_api.ViajeUpdateScreen
 import com.example.consumo_api.ViajePatchScreen
 import com.example.consumo_api.ViajeDeleteScreen
 import com.example.consumo_api.modules.Viaje
+
+
 
 
 @Composable
@@ -36,6 +38,7 @@ fun AnimalTabLayout(viewModel: ViajeViewModel = ViajeViewModel()) {
                     onClick = { selectedTab = index },
                     text = { Text(title) }
                 )
+
             }
         }
         when (selectedTab) {

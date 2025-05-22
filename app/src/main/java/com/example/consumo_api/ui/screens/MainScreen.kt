@@ -37,6 +37,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.consumo_api.R // Asegúrate que el paquete coincide con el tuyo
 
+import com.example.consumo_api.ui.AnimalTabLayout
+
 
 
 
@@ -121,6 +123,7 @@ fun MainScreen() {
                     composable("tasks") { TaskScreen(viewModel()) }
                     composable("profile") { AnimalTabLayout(ViajeViewModel()) }
                     composable("Sala") { SalaScreen() }
+                    composable("Localizacion") { PantallaLocalizacion() }
                 }
             }
         }

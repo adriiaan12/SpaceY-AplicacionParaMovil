@@ -1,4 +1,4 @@
-package com.example.consumo_api
+package com.example.consumo_api.ui.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.consumo_api.modules.Viaje
 import com.example.consumo_api.modules.ViajeViewModel
+import com.example.consumo_api.generarPdf
 
 @Composable
 fun ListaViajes(viewModel: ViajeViewModel = ViajeViewModel()) {

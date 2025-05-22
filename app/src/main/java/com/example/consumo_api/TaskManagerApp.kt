@@ -1,4 +1,4 @@
-package com.example.consumo_api
+/*package com.example.consumo_api
 
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ModalNavigationDrawer
@@ -9,7 +9,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.consumo_api.ui.components.AppDrawer
 import com.example.consumo_api.ui.screens.HomeScreen
-import com.example.consumo_api.ui.screens.AnimalTabLayout
+import com.example.consumo_api.ui.AnimalTabLayout
 import com.example.consumo_api.ui.screens.TaskScreen
 import kotlinx.coroutines.launch
 import androidx.navigation.compose.NavHost
@@ -18,6 +18,7 @@ import androidx.navigation.compose.composable
 import com.example.consumo_api.models.ViewModel_class
 import com.example.consumo_api.modules.ViajeViewModel
 import com.example.consumo_api.ui.screens.SalaScreen
+import com.example.consumo_api.ui.screens.PantallaLocalizacion
 import com.example.consumo_api.ui.theme.Pink80
 
 
@@ -81,6 +82,7 @@ fun TaskManagerApp() {
             composable("tasks") { TaskScreen(viewModel) }
             composable("profile") {AnimalTabLayout(ViajeViewModel()) }
             composable("Sala") { SalaScreen() }
+            composable("Localizacion") { PantallaLocalizacion() }
         }
     }
-}
+}*/

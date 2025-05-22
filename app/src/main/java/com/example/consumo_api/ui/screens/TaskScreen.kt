@@ -36,6 +36,17 @@ import androidx.compose.foundation.clickable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.background
+import androidx.compose.ui.viewinterop.AndroidView
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+
+import android.content.Context
+
+
+import androidx.compose.ui.viewinterop.AndroidView
+
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -231,6 +242,8 @@ fun TaskScreen(viewModel: ViewModel_class) {
             Text("Enviar")
         }
 
+
+
         // Enviar email si validación fue exitosa
         if (uiState.envioExitoso) {
             LaunchedEffect(Unit) {
@@ -256,3 +269,5 @@ fun TaskScreen(viewModel: ViewModel_class) {
         }
     }
 }
+
+
