@@ -23,6 +23,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 
 import android.widget.Toast
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 
@@ -57,7 +58,7 @@ fun ViajeCreateScreen(viewModel: ViajeViewModel) {
         OutlinedTextField(value = npersonas, onValueChange = { npersonas = it }, label = { Text("npersonas") })
         Row(verticalAlignment = Alignment.CenterVertically) {
             Checkbox(checked = embarazada, onCheckedChange = { embarazada = it })
-            Text("En peligro")
+            Text("En peligro",color = Color.White)
         }
 
         Button(onClick = {
