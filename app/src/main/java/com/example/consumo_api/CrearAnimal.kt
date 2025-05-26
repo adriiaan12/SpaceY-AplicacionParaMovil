@@ -22,6 +22,10 @@ import com.example.consumo_api.modules.ViajeViewModel
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
+
+
 
 @Composable
 fun ViajeCreateScreen(viewModel: ViajeViewModel) {
@@ -35,6 +39,9 @@ fun ViajeCreateScreen(viewModel: ViajeViewModel) {
     var embarazada by remember { mutableStateOf(false) }
 
     val scrollState = rememberScrollState()
+
+    val context = LocalContext.current
+
 
 
 
@@ -57,6 +64,9 @@ fun ViajeCreateScreen(viewModel: ViajeViewModel) {
 
                 viewModel.agregarViaje(Viaje(0,nombre,apellido,correo,tlf,npersonas.toIntOrNull() ?: 0,apellido
                     ,apellido,fechaini,fechafin,embarazada))
+
+            Toast.makeText(context, "Viaje creado correctamente", Toast.LENGTH_SHORT).show()
+
 
         }) {
             Text("Crear Animal")

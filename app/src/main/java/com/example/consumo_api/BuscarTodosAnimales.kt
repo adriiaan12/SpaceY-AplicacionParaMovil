@@ -32,11 +32,15 @@ fun ListaViajes(viewModel: ViajeViewModel = ViajeViewModel()) {
     LaunchedEffect(Unit) {
         viewModel.obtenerViajes()
     }
-    LazyColumn {
-        items(viajes) { viaje ->
-            Card( colors = CardDefaults.cardColors(containerColor = Color.Red,
-            ),
 
+    LazyColumn(
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()
+    ) {
+        items(viajes) { viaje ->
+            Card(
+                colors = CardDefaults.cardColors(containerColor = Color.Red),
                 modifier = Modifier
                     .padding(8.dp)
                     .fillMaxWidth()
@@ -44,21 +48,34 @@ fun ListaViajes(viewModel: ViajeViewModel = ViajeViewModel()) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text("Id: ${viaje.id}")
                     Text("Nombre: ${viaje.nombre}")
-                    Text("Especie: ${viaje.apellido}")
-                    Text("Edad: ${viaje.tlf}")
-                    Text("Hábitat: ${viaje.correo}")
-                    Text("En peligro: ${if (viaje.embarazada) "Sí" else "No"}")
+                    Text("Apellido: ${viaje.apellido}")
+                    Text("Telefono: ${viaje.tlf}")
+                    Text("Correo: ${viaje.correo}")
+                    Text("Fecha Inicio: ${viaje.fechaini}")
+                    Text("Fecha Fin: ${viaje.fechafin}")
+                    Text("Plan: ${viaje.plan}")
+                    Text("Tipo de Cohete: ${viaje.tipocohete}")
+                    Text("Numero de Personas: ${viaje.npersonas}")
+                    Text("Embarazada: ${if (viaje.embarazada) "Sí" else "No"}")
                 }
             }
         }
-    }
-    Spacer(modifier = Modifier.height(16.dp))
-    Button(onClick = {
-        generarPdf(contexto, viajes)
-    }) {
-        Text("Exportar a PDF")
+
+        // Este es el botón como parte del scroll
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(
+                onClick = { generarPdf(contexto, viajes) },
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            ) {
+                Text("Exportar a PDF")
+            }
+        }
     }
 }
+
 
 
 // La forma más simple de mostrar los elementos cargados de la API

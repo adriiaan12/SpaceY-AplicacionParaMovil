@@ -15,11 +15,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.consumo_api.modules.ViajeViewModel
 
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
+
 @Composable
 fun ViajePatchScreen(viewModel: ViajeViewModel) {
     var id by remember { mutableStateOf("") }
     var campo by remember { mutableStateOf("") }
     var valor by remember { mutableStateOf("") }
+
+    val context = LocalContext.current
 
     Column(modifier = Modifier.padding(16.dp)) {
         OutlinedTextField(value = id, onValueChange = { id = it }, label = { Text("ID del animal") })
@@ -34,6 +39,7 @@ fun ViajePatchScreen(viewModel: ViajeViewModel) {
             }
 
             viewModel.patchViaje(id.toInt(), mapOf(campo to convertedValue))
+            Toast.makeText(context, "Viaje editado correctamente", Toast.LENGTH_SHORT).show()
         }) {
             Text("Editar Parcialmente")
         }
