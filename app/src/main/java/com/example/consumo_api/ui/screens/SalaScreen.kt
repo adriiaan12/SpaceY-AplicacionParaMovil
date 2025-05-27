@@ -9,7 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 
-
+import android.content.Context
+import androidx.compose.ui.platform.LocalContext
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -39,9 +40,10 @@ data class Sala(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SalaScreen() {
+    val context = LocalContext.current
     val salas = listOf(
         Sala(
-            R.drawable.sala1,
+            imagenRes = R.drawable.sala1,
             "El Falcon 9 es un cohete reutilizable de dos etapas diseñado y fabricado por SpaceX.",
             "Transportó la cápsula Crew Dragon en misiones tripuladas de la NASA y ha desplegado miles de satélites Starlink en la órbita baja terrestre.",
             listOf(
@@ -50,7 +52,7 @@ fun SalaScreen() {
             )
         ),
         Sala(
-            R.drawable.sala2,
+            imagenRes = R.drawable.sala2,
             "Cohete lanzado en España y desarrollado por PLD Space en 2024",
             "Primer y unico cohete lanzado por una empresa española. Este se realiza con completo exito",
             listOf(
@@ -59,7 +61,7 @@ fun SalaScreen() {
             )
         ),
         Sala(
-            R.drawable.sala3,
+            imagenRes = R.drawable.sala3,
             "El Ariane 5 es un cohete de lanzamiento desarrollado por la Agencia Espacial Europea (ESA).",
             "Realizó el lanzamiento del telescopio espacial James Webb en 2021.",
             listOf(
@@ -93,7 +95,7 @@ fun SalaScreen() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 items(salas) { sala ->
-                    SalaCard(sala)
+                    SalaCard(sala, context, salas)
                 }
             }
         }
@@ -101,7 +103,7 @@ fun SalaScreen() {
 }
 
 @Composable
-fun SalaCard(sala: Sala) {
+fun SalaCard(sala: Sala, context: Context, salas: List<Sala>) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -161,6 +163,13 @@ fun SalaCard(sala: Sala) {
                     Text(capacidad, color = Color.White)
                 }
             }
+        }
+        Button(
+            onClick = { generarPdf(context, salas) },
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            shape = RoundedCornerShape(12.dp)
+        ) {
+            Text("Descargar PDF")
         }
     }
 }
