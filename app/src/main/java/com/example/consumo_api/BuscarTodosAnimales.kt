@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -23,6 +24,8 @@ import androidx.compose.ui.unit.dp
 import com.example.consumo_api.modules.Viaje
 import com.example.consumo_api.modules.ViajeViewModel
 import com.example.consumo_api.generarPdf
+import com.example.consumo_api.ui.theme.azulboton
+import com.example.consumo_api.ui.theme.colorboton
 
 @Composable
 fun ListaViajes(viewModel: ViajeViewModel = ViajeViewModel()) {
@@ -40,23 +43,23 @@ fun ListaViajes(viewModel: ViajeViewModel = ViajeViewModel()) {
     ) {
         items(viajes) { viaje ->
             Card(
-                colors = CardDefaults.cardColors(containerColor = Color.Red),
+                colors = CardDefaults.cardColors(containerColor = azulboton),
                 modifier = Modifier
                     .padding(8.dp)
                     .fillMaxWidth()
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Id: ${viaje.id}")
-                    Text("Nombre: ${viaje.nombre}")
-                    Text("Apellido: ${viaje.apellido}")
-                    Text("Telefono: ${viaje.tlf}")
-                    Text("Correo: ${viaje.correo}")
-                    Text("Fecha Inicio: ${viaje.fechaini}")
-                    Text("Fecha Fin: ${viaje.fechafin}")
-                    Text("Plan: ${viaje.plan}")
-                    Text("Tipo de Cohete: ${viaje.tipocohete}")
-                    Text("Numero de Personas: ${viaje.npersonas}")
-                    Text("Embarazada: ${if (viaje.embarazada) "Sí" else "No"}")
+                    Text("Id: ${viaje.id}",color=Color.White)
+                    Text("Nombre: ${viaje.nombre}",color=Color.White)
+                    Text("Apellido: ${viaje.apellido}",color=Color.White)
+                    Text("Telefono: ${viaje.tlf}",color=Color.White)
+                    Text("Correo: ${viaje.correo}",color=Color.White)
+                    Text("Fecha Inicio: ${viaje.fechaini}",color=Color.White)
+                    Text("Fecha Fin: ${viaje.fechafin}",color=Color.White)
+                    Text("Plan: ${viaje.plan}",color=Color.White)
+                    Text("Tipo de Cohete: ${viaje.tipocohete}",color=Color.White)
+                    Text("Numero de Personas: ${viaje.npersonas}",color=Color.White)
+                    Text("Embarazada: ${if (viaje.embarazada) "Sí" else "No"}",color=Color.White)
                 }
             }
         }
@@ -69,6 +72,12 @@ fun ListaViajes(viewModel: ViajeViewModel = ViajeViewModel()) {
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
+                ,colors = ButtonDefaults.buttonColors(
+                    containerColor = colorboton,       // Fondo del botón
+                    contentColor = Color.White,        // Color del texto/icono
+                    disabledContainerColor = Color.Gray,
+                    disabledContentColor = Color.LightGray
+                )
             ) {
                 Text("Exportar a PDF")
             }

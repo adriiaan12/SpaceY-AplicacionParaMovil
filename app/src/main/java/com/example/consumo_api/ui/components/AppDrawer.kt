@@ -57,7 +57,7 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
             NavigationDrawerItem(
                 label = { Text("Reservas") },
                 selected = false,
-                onClick = { onDestinationClicked("tasks") },
+                onClick = { onDestinationClicked("taskIntro") },
                 icon = { Icon(Icons.Default.DateRange, contentDescription = "Reservas") },
                 colors = NavigationDrawerItemDefaults.colors(
                     selectedContainerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.12f),
@@ -69,6 +69,8 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
                     unselectedTextColor = White
                 )
             )
+
+
 
             NavigationDrawerItem(
                 label = { Text("Perfil") },

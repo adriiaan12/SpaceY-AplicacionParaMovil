@@ -47,6 +47,9 @@ import android.content.Context
 
 import androidx.compose.ui.viewinterop.AndroidView
 
+import androidx.compose.material3.TextFieldDefaults
+import com.example.consumo_api.ui.theme.azulboton
+import com.example.consumo_api.ui.theme.colorboton
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -76,6 +79,18 @@ fun TaskScreen(viewModel: ViewModel_class) {
         }, year, month, day)
     }
 
+    val customTextFieldColors = TextFieldDefaults.colors(
+        focusedTextColor = Color.White,
+        unfocusedTextColor = Color.White,
+        disabledTextColor = Color.White,
+        cursorColor = Color.White,
+        focusedContainerColor = azulboton,
+        unfocusedContainerColor = azulboton,
+        disabledContainerColor = azulboton,
+
+
+    )
+
 
 
     Column(
@@ -89,21 +104,24 @@ fun TaskScreen(viewModel: ViewModel_class) {
         TextField(
             value = uiState.nombre,
             onValueChange = viewModel::onNombreChange,
-            label = { Text("Nombre") },
+            label = { Text("Nombre",color=Color.White)  },
+            colors=customTextFieldColors,
             modifier = Modifier.fillMaxWidth()
         )
 
         TextField(
             value = uiState.apellido,
             onValueChange = viewModel::onApellidoChange,
-            label = { Text("Apellido") },
+            label = { Text("Apellido",color=Color.White) },
+            colors=customTextFieldColors,
             modifier = Modifier.fillMaxWidth()
         )
 
         TextField(
             value = uiState.correo,
             onValueChange = viewModel::onCorreoChange,
-            label = { Text("Correo") },
+            label = { Text("Correo",color=Color.White) },
+            colors=customTextFieldColors,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             modifier = Modifier.fillMaxWidth()
 
@@ -112,7 +130,8 @@ fun TaskScreen(viewModel: ViewModel_class) {
         TextField(
             value = uiState.tlf,
             onValueChange = viewModel::ontlfChange,
-            label = { Text("Telefono") },
+            label = { Text("Telefono",color=Color.White) },
+            colors=customTextFieldColors,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             modifier = Modifier.fillMaxWidth()
         )
@@ -124,8 +143,9 @@ fun TaskScreen(viewModel: ViewModel_class) {
                 val numero = it.toIntOrNull() ?: 0 // Convertir String a Int con control de errores
                 viewModel.onnpersonasChange(numero)
             },
-            label = { Text("Número de Personas") },
+            label = { Text("Número de Personas",color=Color.White) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            colors=customTextFieldColors,
             modifier = Modifier.fillMaxWidth()
         )
 
@@ -133,7 +153,8 @@ fun TaskScreen(viewModel: ViewModel_class) {
             value = uiState.fechaini,
             onValueChange = {},
             enabled = false, // evita edición manual
-            label = { Text("Fecha de Inicio Viaje") },
+            label = { Text("Fecha de Inicio Viaje",color=Color.White) },
+            colors=customTextFieldColors,
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
@@ -144,7 +165,8 @@ fun TaskScreen(viewModel: ViewModel_class) {
             value = uiState.fechafin,
             onValueChange = {},
             enabled = false, // evita edición manual
-            label = { Text("Fecha de Fin Viaje") },
+            label = { Text("Fecha de Fin Viaje",color=Color.White) },
+            colors=customTextFieldColors,
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
@@ -159,11 +181,11 @@ fun TaskScreen(viewModel: ViewModel_class) {
                 readOnly = true,
                 value = uiState.tipocohete,
                 onValueChange = {},
-                label = { Text("Tipo de Cohete") },
+                label = { Text("Tipo de Cohete",color=Color.White) },
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
                 },
-                colors = ExposedDropdownMenuDefaults.textFieldColors(),
+                colors = customTextFieldColors,
                 modifier = Modifier
                     .menuAnchor()
                     .fillMaxWidth()
@@ -191,11 +213,12 @@ fun TaskScreen(viewModel: ViewModel_class) {
                 readOnly = true,
                 value = uiState.plan,
                 onValueChange = {},
-                label = { Text("Tipo de Plan") },
+                label = { Text("Tipo de Plan",color=Color.White) },
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded2)
                 },
-                colors = ExposedDropdownMenuDefaults.textFieldColors(),
+                colors = customTextFieldColors,
+
                 modifier = Modifier
                     .menuAnchor()
                     .fillMaxWidth()
@@ -229,7 +252,8 @@ fun TaskScreen(viewModel: ViewModel_class) {
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             Checkbox(checked = embarazada, onCheckedChange = { embarazada = it })
-            Text("Embarazada")
+            Text("Embarazada",color=Color.White)
+
         }
 
         Button(
@@ -237,7 +261,13 @@ fun TaskScreen(viewModel: ViewModel_class) {
                 viewModel.agregarViaje(Viaje(0,uiState.nombre,uiState.apellido,uiState.correo,uiState.tlf,uiState.npersonas,uiState.tipocohete
                     ,uiState.plan,uiState.fechaini,uiState.fechafin,embarazada))
             },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(
+                    containerColor = colorboton,       // Fondo del botón
+            contentColor = Color.White,        // Color del texto/icono
+            disabledContainerColor = Color.Gray,
+            disabledContentColor = Color.LightGray
+        )
         ) {
             Text("Enviar")
         }

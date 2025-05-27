@@ -120,10 +120,11 @@ fun MainScreen() {
                     modifier = Modifier.padding(paddingValues)
                 ) {
                     composable("home") { HomeScreen() }
-                    composable("tasks") { TaskScreen(viewModel()) }
+                    composable("taskIntro") { TaskIntroScreen(navController) }
                     composable("profile") { AnimalTabLayout(ViajeViewModel()) }
                     composable("Sala") { SalaScreen() }
                     composable("Localizacion") { PantallaLocalizacion() }
+                    composable("tasks") { TaskScreen(viewModel()) }
                 }
             }
         }

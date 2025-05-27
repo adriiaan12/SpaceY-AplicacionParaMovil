@@ -31,12 +31,13 @@ fun AnimalTabLayout(viewModel: ViajeViewModel = ViajeViewModel()) {
     var selectedTab by remember { mutableStateOf(0) }
 
     Column {
-        TabRow(selectedTabIndex = selectedTab) {
+        TabRow(selectedTabIndex = selectedTab,containerColor = Color.Black) {
             tabs.forEachIndexed { index, title ->
                 Tab(
                     selected = selectedTab == index,
                     onClick = { selectedTab = index },
-                    text = { Text(title) }
+                    text = { Text(title) },
+
                 )
 
             }

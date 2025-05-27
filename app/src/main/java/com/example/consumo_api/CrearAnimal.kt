@@ -23,9 +23,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 
 import android.widget.Toast
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-
+import com.example.consumo_api.ui.theme.azulboton
+import com.example.consumo_api.ui.theme.colorboton
 
 
 @Composable
@@ -43,22 +46,32 @@ fun ViajeCreateScreen(viewModel: ViajeViewModel) {
 
     val context = LocalContext.current
 
+    val customTextFieldColors = TextFieldDefaults.colors(
+        focusedTextColor = Color.White,
+        unfocusedTextColor = Color.White,
+        disabledTextColor = Color.White,
+        cursorColor = Color.White,
+        focusedContainerColor = azulboton,
+        unfocusedContainerColor = azulboton,
+        disabledContainerColor = azulboton,
 
+
+        )
 
 
 
 
     Column(modifier = androidx.compose.ui.Modifier.verticalScroll(scrollState)) {
-        OutlinedTextField(value = nombre, onValueChange = { nombre = it }, label = { Text("Nombre") })
-        OutlinedTextField(value = apellido, onValueChange = { apellido = it }, label = { Text("Apellido") })
-        OutlinedTextField(value = correo, onValueChange = { correo = it }, label = { Text("correo") })
-        OutlinedTextField(value = tlf, onValueChange = { tlf = it }, label = { Text("tlf") })
-        OutlinedTextField(value = fechaini, onValueChange = { fechaini = it }, label = { Text("Fecha ini") })
-        OutlinedTextField(value = fechafin, onValueChange = { fechafin = it }, label = { Text("Fecha Fin") })
-        OutlinedTextField(value = npersonas, onValueChange = { npersonas = it }, label = { Text("npersonas") })
+        OutlinedTextField(value = nombre, onValueChange = { nombre = it },colors=customTextFieldColors, label = { Text("Nombre", color=Color.White) })
+        OutlinedTextField(value = apellido, onValueChange = { apellido = it },colors=customTextFieldColors, label = { Text("Apellido", color=Color.White) })
+        OutlinedTextField(value = correo, onValueChange = { correo = it },colors=customTextFieldColors, label = { Text("correo", color=Color.White) })
+        OutlinedTextField(value = tlf, onValueChange = { tlf = it },colors=customTextFieldColors, label = { Text("Teléfono", color=Color.White) })
+        OutlinedTextField(value = fechaini, onValueChange = { fechaini = it },colors=customTextFieldColors, label = { Text("Fecha ini", color=Color.White) })
+        OutlinedTextField(value = fechafin, onValueChange = { fechafin = it },colors=customTextFieldColors, label = { Text("Fecha Fin", color=Color.White) })
+        OutlinedTextField(value = npersonas, onValueChange = { npersonas = it },colors=customTextFieldColors, label = { Text("Personas", color=Color.White) })
         Row(verticalAlignment = Alignment.CenterVertically) {
             Checkbox(checked = embarazada, onCheckedChange = { embarazada = it })
-            Text("En peligro",color = Color.White)
+            Text("Embarazada",color = Color.White)
         }
 
         Button(onClick = {
@@ -69,7 +82,12 @@ fun ViajeCreateScreen(viewModel: ViajeViewModel) {
             Toast.makeText(context, "Viaje creado correctamente", Toast.LENGTH_SHORT).show()
 
 
-        }) {
+        },colors = ButtonDefaults.buttonColors(
+            containerColor = colorboton,       // Fondo del botón
+            contentColor = Color.White,        // Color del texto/icono
+            disabledContainerColor = Color.Gray,
+            disabledContentColor = Color.LightGray
+        )) {
             Text("Crear Animal")
         }
     }
