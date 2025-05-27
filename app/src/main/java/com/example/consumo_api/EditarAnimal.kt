@@ -23,7 +23,9 @@ import com.example.consumo_api.modules.ViajeViewModel
 
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.ui.graphics.Color
+import com.example.consumo_api.ui.theme.azulboton
 
 
 @Composable
@@ -35,6 +37,9 @@ fun ViajeUpdateScreen(viewModel: ViajeViewModel) {
     var fechaini by remember { mutableStateOf("") }
     var fechafin by remember { mutableStateOf("") }
     var tlf by remember { mutableStateOf("") }
+    var tipocohete by remember { mutableStateOf("") }
+    var plan by remember { mutableStateOf("") }
+
     var npersonas by remember { mutableStateOf("") }
     var embarazada by remember { mutableStateOf(false) }
 
@@ -42,24 +47,39 @@ fun ViajeUpdateScreen(viewModel: ViajeViewModel) {
 
     val scrollState = rememberScrollState()
 
+    val customTextFieldColors = TextFieldDefaults.colors(
+        focusedTextColor = Color.White,
+        unfocusedTextColor = Color.White,
+        disabledTextColor = Color.White,
+        cursorColor = Color.White,
+        focusedContainerColor = azulboton,
+        unfocusedContainerColor = azulboton,
+        disabledContainerColor = azulboton,
+
+
+        )
+
 
 
     Column(modifier = Modifier.padding(16.dp).verticalScroll(scrollState) ) {
-        OutlinedTextField(value = nombre, onValueChange = { nombre = it }, label = { Text("Nombre") })
-        OutlinedTextField(value = apellido, onValueChange = { apellido = it }, label = { Text("Apellido") })
-        OutlinedTextField(value = correo, onValueChange = { correo = it }, label = { Text("correo") })
-        OutlinedTextField(value = tlf, onValueChange = { tlf = it }, label = { Text("tlf") })
-        OutlinedTextField(value = fechaini, onValueChange = { fechaini = it }, label = { Text("Fecha ini") })
-        OutlinedTextField(value = fechafin, onValueChange = { fechafin = it }, label = { Text("Fecha Fin") })
-        OutlinedTextField(value = npersonas, onValueChange = { npersonas = it }, label = { Text("npersonas") })
+        OutlinedTextField(value = id, onValueChange = { id = it },colors=customTextFieldColors, label = { Text("ID a actualizar", color=Color.White) })
+        OutlinedTextField(value = nombre, onValueChange = { nombre = it },colors=customTextFieldColors, label = { Text("Nombre", color=Color.White) })
+        OutlinedTextField(value = apellido, onValueChange = { apellido = it },colors=customTextFieldColors, label = { Text("Apellido", color=Color.White) })
+        OutlinedTextField(value = correo, onValueChange = { correo = it },colors=customTextFieldColors, label = { Text("correo", color=Color.White) })
+        OutlinedTextField(value = tlf, onValueChange = { tlf = it },colors=customTextFieldColors, label = { Text("Teléfono", color=Color.White) })
+        OutlinedTextField(value = fechaini, onValueChange = { fechaini = it },colors=customTextFieldColors, label = { Text("Fecha ini", color=Color.White) })
+        OutlinedTextField(value = fechafin, onValueChange = { fechafin = it },colors=customTextFieldColors, label = { Text("Fecha Fin", color=Color.White) })
+        OutlinedTextField(value = npersonas, onValueChange = { npersonas = it },colors=customTextFieldColors, label = { Text("Personas", color=Color.White) })
+        OutlinedTextField(value = plan, onValueChange = { plan = it },colors=customTextFieldColors, label = { Text("Plan", color=Color.White) })
+        OutlinedTextField(value = tipocohete, onValueChange = { tipocohete = it },colors=customTextFieldColors, label = { Text("Tipo de COhete", color=Color.White) })
         Row(verticalAlignment = Alignment.CenterVertically) {
             Checkbox(checked = embarazada, onCheckedChange = { embarazada = it })
-            Text("En peligro",color = Color.White)
+            Text("Embarazada",color = Color.White)
         }
 
         Button(onClick = {
-            val viaje = Viaje(0,nombre,apellido,correo,tlf,npersonas.toInt(),apellido
-                ,apellido,fechaini,fechafin,embarazada)
+            val viaje = Viaje(id.toInt(),nombre,apellido,correo,tlf,npersonas.toIntOrNull() ?: 0,tipocohete,plan,fechaini,fechafin,embarazada)
+            viewModel.editarViaje(id.toInt(), viaje)
             Toast.makeText(context, "Viaje editado correctamente", Toast.LENGTH_SHORT).show()
         }) {
             Text("Actualizar Animal")

@@ -16,7 +16,10 @@ import androidx.compose.ui.unit.dp
 import com.example.consumo_api.modules.ViajeViewModel
 
 import android.widget.Toast
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import com.example.consumo_api.ui.theme.azulboton
 
 @Composable
 fun ViajePatchScreen(viewModel: ViajeViewModel) {
@@ -26,10 +29,23 @@ fun ViajePatchScreen(viewModel: ViajeViewModel) {
 
     val context = LocalContext.current
 
+
+    val customTextFieldColors = TextFieldDefaults.colors(
+        focusedTextColor = Color.White,
+        unfocusedTextColor = Color.White,
+        disabledTextColor = Color.White,
+        cursorColor = Color.White,
+        focusedContainerColor = azulboton,
+        unfocusedContainerColor = azulboton,
+        disabledContainerColor = azulboton,
+
+
+        )
+
     Column(modifier = Modifier.padding(16.dp)) {
-        OutlinedTextField(value = id, onValueChange = { id = it }, label = { Text("ID del animal") })
-        OutlinedTextField(value = campo, onValueChange = { campo = it }, label = { Text("Campo a editar (nombre, edad, etc)") })
-        OutlinedTextField(value = valor, onValueChange = { valor = it }, label = { Text("Nuevo valor") })
+        OutlinedTextField(value = id, onValueChange = { id = it },colors=customTextFieldColors, label = { Text("ID del animal", color=Color.White) })
+        OutlinedTextField(value = campo, onValueChange = { campo = it },colors=customTextFieldColors, label = { Text("Campo a editar (nombre, edad, etc)", color=Color.White) })
+        OutlinedTextField(value = valor, onValueChange = { valor = it },colors=customTextFieldColors, label = { Text("Nuevo valor", color=Color.White) })
 
         Button(onClick = {
             val convertedValue: Any = when (campo) {

@@ -41,6 +41,8 @@ fun ViajeCreateScreen(viewModel: ViajeViewModel) {
     var tlf by remember { mutableStateOf("") }
     var npersonas by remember { mutableStateOf("") }
     var embarazada by remember { mutableStateOf(false) }
+    var tipocohete by remember { mutableStateOf("") }
+    var plan by remember { mutableStateOf("") }
 
     val scrollState = rememberScrollState()
 
@@ -62,6 +64,7 @@ fun ViajeCreateScreen(viewModel: ViajeViewModel) {
 
 
     Column(modifier = androidx.compose.ui.Modifier.verticalScroll(scrollState)) {
+
         OutlinedTextField(value = nombre, onValueChange = { nombre = it },colors=customTextFieldColors, label = { Text("Nombre", color=Color.White) })
         OutlinedTextField(value = apellido, onValueChange = { apellido = it },colors=customTextFieldColors, label = { Text("Apellido", color=Color.White) })
         OutlinedTextField(value = correo, onValueChange = { correo = it },colors=customTextFieldColors, label = { Text("correo", color=Color.White) })
@@ -69,6 +72,8 @@ fun ViajeCreateScreen(viewModel: ViajeViewModel) {
         OutlinedTextField(value = fechaini, onValueChange = { fechaini = it },colors=customTextFieldColors, label = { Text("Fecha ini", color=Color.White) })
         OutlinedTextField(value = fechafin, onValueChange = { fechafin = it },colors=customTextFieldColors, label = { Text("Fecha Fin", color=Color.White) })
         OutlinedTextField(value = npersonas, onValueChange = { npersonas = it },colors=customTextFieldColors, label = { Text("Personas", color=Color.White) })
+        OutlinedTextField(value = plan, onValueChange = { plan = it },colors=customTextFieldColors, label = { Text("Plan", color=Color.White) })
+        OutlinedTextField(value = tipocohete, onValueChange = { tipocohete = it },colors=customTextFieldColors, label = { Text("Tipo de COhete", color=Color.White) })
         Row(verticalAlignment = Alignment.CenterVertically) {
             Checkbox(checked = embarazada, onCheckedChange = { embarazada = it })
             Text("Embarazada",color = Color.White)
