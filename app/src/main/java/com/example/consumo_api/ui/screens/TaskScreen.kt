@@ -49,6 +49,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.ui.viewinterop.AndroidView
 
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.ui.platform.testTag
 import com.example.consumo_api.ui.theme.azulboton
 import com.example.consumo_api.ui.theme.colorboton
 
@@ -256,8 +257,9 @@ fun TaskScreen(viewModel: ViewModel_class) {
             Text(text = it, color = MaterialTheme.colorScheme.error)
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Checkbox(checked = embarazada, onCheckedChange = { embarazada = it })
+            Checkbox(checked = embarazada, onCheckedChange = { embarazada = it }, modifier = Modifier.testTag("checkboxEmbarazada"))
             Text("Embarazada",color=Color.White)
+
 
         }
 

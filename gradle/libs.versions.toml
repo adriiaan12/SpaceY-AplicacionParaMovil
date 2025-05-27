@@ -15,6 +15,7 @@ material3 = "1.2.1"
 loggingInterceptor = "5.0.0-alpha.14"
 playServicesMaps = "19.2.0"
 maps-compose = "2.11.4"
+compose = "1.6.0"
 
 
 [libraries]
@@ -42,6 +43,11 @@ maps-compose = { group = "com.google.maps.android", name = "maps-compose", versi
 
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+
+
+
+
+
 
 
 [plugins]

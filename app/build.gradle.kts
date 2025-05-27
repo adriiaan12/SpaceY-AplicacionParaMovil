@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.maps.compose)
 
     implementation(libs.logging.interceptor)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
 
     implementation(libs.navigation.compose)
     implementation(libs.play.services.maps)
