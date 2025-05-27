@@ -93,8 +93,10 @@ fun MainScreen() {
                                 when (currentRoute) {
                                     "home" -> ""
                                     "tasks" -> "Reservas"
+                                    "taskIntro" -> "Reservas"
                                     "profile" -> "Perfil"
                                     "Sala" -> "Cohetes"
+                                    "Localizacion" -> "Localización"
                                     else -> "Mi App"
                                 },
                                         color = Color.White

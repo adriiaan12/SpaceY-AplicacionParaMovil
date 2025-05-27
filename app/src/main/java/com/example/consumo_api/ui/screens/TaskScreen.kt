@@ -43,7 +43,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 import android.content.Context
-
+import android.widget.Toast
+import androidx.compose.foundation.Image
 
 import androidx.compose.ui.viewinterop.AndroidView
 
@@ -79,6 +80,8 @@ fun TaskScreen(viewModel: ViewModel_class) {
         }, year, month, day)
     }
 
+
+
     val customTextFieldColors = TextFieldDefaults.colors(
         focusedTextColor = Color.White,
         unfocusedTextColor = Color.White,
@@ -93,12 +96,14 @@ fun TaskScreen(viewModel: ViewModel_class) {
 
 
 
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black)
             .padding(16.dp).verticalScroll(scrollState),
         verticalArrangement = Arrangement.spacedBy(12.dp)
+
     ) {
 
         TextField(
@@ -258,8 +263,8 @@ fun TaskScreen(viewModel: ViewModel_class) {
 
         Button(
             onClick = {
-                viewModel.agregarViaje(Viaje(0,uiState.nombre,uiState.apellido,uiState.correo,uiState.tlf,uiState.npersonas,uiState.tipocohete
-                    ,uiState.plan,uiState.fechaini,uiState.fechafin,embarazada))
+                viewModel.validarYEnviar()
+
             },
             modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(
@@ -277,22 +282,10 @@ fun TaskScreen(viewModel: ViewModel_class) {
         // Enviar email si validación fue exitosa
         if (uiState.envioExitoso) {
             LaunchedEffect(Unit) {
-                val intent = Intent(Intent.ACTION_SEND).apply {
-                    type = "message/rfc822"
-                    putExtra(Intent.EXTRA_EMAIL, arrayOf("diazcanoignacio@gmail.com"))
-                    putExtra(Intent.EXTRA_SUBJECT, "Formulario de datos")
-                    putExtra(
-                        Intent.EXTRA_TEXT,
-                        """
-                        Nombre: ${uiState.nombre}
-                        Apellido 1: ${uiState.apellido}
-                        Apellido 2: ${uiState.apellido}
-                        DNI: ${uiState.tlf}
-                        Email: ${uiState.correo}
-                        """.trimIndent()
-                    )
-                }
-                context.startActivity(Intent.createChooser(intent, "Enviar email con..."))
+                viewModel.agregarViaje(Viaje(0,uiState.nombre,uiState.apellido,uiState.correo,uiState.tlf,uiState.npersonas,uiState.tipocohete
+                    ,uiState.plan,uiState.fechaini,uiState.fechafin,embarazada))
+                Toast.makeText(context, "Viaje creado correctamente", Toast.LENGTH_SHORT).show()
+
                 // Reseteamos estado para evitar múltiples lanzamientos
                 //viewModel.onEmailChange("") // ejemplo para reset
             }

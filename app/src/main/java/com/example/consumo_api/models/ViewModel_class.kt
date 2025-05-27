@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -120,11 +121,37 @@ class ViewModel_class:ViewModel() {
     fun agregarViaje(viaje: Viaje) {
         viewModelScope.launch {
             try {
+
                 val created = api.crearViaje(viaje)
                 message = "Creado: ${created.nombre}"
                 obtenerViajes()
             } catch (e: Exception) {
                 Log.e("AnimalViewModel", "Error al AGREGAR animal", e)
+            }
+        }
+    }
+
+    fun validarYEnviar() {
+        val state = _uiState.value
+        val emailRegex = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")
+
+        when {
+            state.nombre.isBlank() -> setError("El nombre es obligatorio")
+            state.apellido.isBlank() -> setError("El apellido es obligatorio")
+            !emailRegex.matches(state.correo) -> setError("El email no tiene un formato válido")
+            state.tlf.isBlank() -> setError("El teléfono no puede estar vacío")
+            state.tlf.length > 9 -> setError("El teléfono no puede tener mas de 9 números")
+            state.npersonas < 1 -> setError("Tiene que haber al menos una persona")
+            state.fechaini.isBlank() -> setError("La fecha de inicio no puede estar vacía")
+            state.fechafin.isBlank() -> setError("La fecha de fin no puede estar vacía")
+            state.fechaini>state.fechafin -> setError("La fecha de fin no puede ser menor que la fecha de inicio")
+            state.tipocohete.isBlank() -> setError("Debes elegir un cohete")
+            state.plan.isBlank() -> setError("Debes elegir un plan de viaje")
+
+            else -> {
+                _uiState.update {
+                    it.copy(errorMensaje = null, envioExitoso = true)
+                }
             }
         }
     }
