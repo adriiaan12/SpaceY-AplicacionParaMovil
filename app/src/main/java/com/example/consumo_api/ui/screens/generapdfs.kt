@@ -49,11 +49,8 @@ fun generarPdf(context: Context, salas: List<Sala>) {
         //canvas.drawText(sala.titulo, marginLeft.toFloat(), y.toFloat(), titlePaint)
         y += 35
 
-        // Imagen
-        val bitmap = BitmapFactory.decodeResource(context.resources, sala.imagenRes)
-        val scaledBitmap = Bitmap.createScaledBitmap(bitmap, 250, 150, false)
-        canvas.drawBitmap(scaledBitmap, marginLeft.toFloat(), y.toFloat(), null)
-        y += scaledBitmap.height + 20
+
+
 
         // Descripción
         canvas.drawText("Descripción:", marginLeft.toFloat(), y.toFloat(), subtitlePaint)
