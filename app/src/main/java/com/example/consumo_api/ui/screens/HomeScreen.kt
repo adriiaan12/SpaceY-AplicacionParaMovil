@@ -42,11 +42,20 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.consumo_api.R
 import com.example.consumo_api.models.ViewModel_class
 
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.fontResource
+
 
 @OptIn(ExperimentalMaterial3Api::class)
-
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
+
+    val Orbitron = FontFamily(
+        Font(R.font.orbitron_regular) // puedes agregar otros estilos como bold, italic, etc.
+    )
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -72,7 +81,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             text = "Adrián Sánchez Álvarez\nManuel Saucedo Gonzalez\nYeray Via Alba",
             color = Color.White,
             style = MaterialTheme.typography.headlineMedium.copy(fontSize = 16.sp, lineHeight = 16.sp),
-            textAlign = TextAlign.Start
+            textAlign = TextAlign.Start,
+            fontFamily = Orbitron
         )
     }
 }

@@ -19,6 +19,8 @@ import android.widget.Toast
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import com.example.consumo_api.ui.theme.azulboton
 
 @Composable
@@ -42,10 +44,14 @@ fun ViajePatchScreen(viewModel: ViajeViewModel) {
 
         )
 
+    val antonio = FontFamily(
+        Font(R.font.antonio_semibold) // puedes agregar otros estilos como bold, italic, etc.
+    )
+
     Column(modifier = Modifier.padding(16.dp)) {
-        OutlinedTextField(value = id, onValueChange = { id = it },colors=customTextFieldColors, label = { Text("ID del animal", color=Color.White) })
-        OutlinedTextField(value = campo, onValueChange = { campo = it },colors=customTextFieldColors, label = { Text("Campo a editar (nombre, edad, etc)", color=Color.White) })
-        OutlinedTextField(value = valor, onValueChange = { valor = it },colors=customTextFieldColors, label = { Text("Nuevo valor", color=Color.White) })
+        OutlinedTextField(value = id, onValueChange = { id = it },colors=customTextFieldColors, label = { Text("ID del viaje", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = campo, onValueChange = { campo = it },colors=customTextFieldColors, label = { Text("Campo a editar (nombre, correo, etc)", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = valor, onValueChange = { valor = it },colors=customTextFieldColors, label = { Text("Nuevo valor", color=Color.White, fontFamily = antonio) })
 
         Button(onClick = {
             val convertedValue: Any = when (campo) {
@@ -57,7 +63,7 @@ fun ViajePatchScreen(viewModel: ViajeViewModel) {
             viewModel.patchViaje(id.toInt(), mapOf(campo to convertedValue))
             Toast.makeText(context, "Viaje editado correctamente", Toast.LENGTH_SHORT).show()
         }) {
-            Text("Editar Parcialmente")
+            Text("Editar Parcialmente", fontFamily = antonio)
         }
     }
 }

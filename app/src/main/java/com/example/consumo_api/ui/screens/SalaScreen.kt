@@ -27,8 +27,11 @@ import androidx.compose.ui.unit.dp
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 
 import com.example.consumo_api.R
+
 
 data class Sala(
     val imagenRes: Int,
@@ -41,6 +44,9 @@ data class Sala(
 @Composable
 fun SalaScreen() {
     val context = LocalContext.current
+
+
+
     val salas = listOf(
         Sala(
             imagenRes = R.drawable.sala1,
@@ -92,7 +98,8 @@ fun SalaScreen() {
                     .padding(paddingValues)
                     .padding(8.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+
             ) {
                 items(salas) { sala ->
                     SalaCard(sala, context, salas)
@@ -104,6 +111,9 @@ fun SalaScreen() {
 
 @Composable
 fun SalaCard(sala: Sala, context: Context, salas: List<Sala>) {
+    val antonio = FontFamily(
+        Font(R.font.antonio_semibold) // puedes agregar otros estilos como bold, italic, etc.
+    )
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -125,7 +135,8 @@ fun SalaCard(sala: Sala, context: Context, salas: List<Sala>) {
             text = sala.descripcion,
             style = MaterialTheme.typography.bodyLarge,
             color = Color.White,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            fontFamily = antonio
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -134,7 +145,8 @@ fun SalaCard(sala: Sala, context: Context, salas: List<Sala>) {
             text = sala.descripcion2,
             style = MaterialTheme.typography.bodyMedium,
             color = Color.White,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            fontFamily = antonio
         )
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -149,8 +161,10 @@ fun SalaCard(sala: Sala, context: Context, salas: List<Sala>) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text("Información", color = Color.White, style = MaterialTheme.typography.bodyMedium)
-                Text("Datos", color = Color.White, style = MaterialTheme.typography.bodyMedium)
+                Text("Información", color = Color.White, style = MaterialTheme.typography.bodyMedium,
+                    fontFamily = antonio)
+                Text("Datos", color = Color.White, style = MaterialTheme.typography.bodyMedium,
+                    fontFamily = antonio)
             }
             Divider(color = Color.White.copy(alpha = 0.3f), thickness = 1.dp)
 
@@ -159,8 +173,10 @@ fun SalaCard(sala: Sala, context: Context, salas: List<Sala>) {
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text(zona, color = Color.White)
-                    Text(capacidad, color = Color.White)
+                    Text(zona, color = Color.White,
+                        fontFamily = antonio)
+                    Text(capacidad, color = Color.White,
+                        fontFamily = antonio)
                 }
             }
         }
@@ -169,7 +185,8 @@ fun SalaCard(sala: Sala, context: Context, salas: List<Sala>) {
             modifier = Modifier.align(Alignment.CenterHorizontally),
             shape = RoundedCornerShape(12.dp)
         ) {
-            Text("Descargar PDF")
+            Text("Descargar PDF",
+                fontFamily = antonio)
         }
     }
 }

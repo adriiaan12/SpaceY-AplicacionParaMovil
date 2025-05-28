@@ -50,6 +50,9 @@ import androidx.compose.ui.viewinterop.AndroidView
 
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import com.example.consumo_api.R
 import com.example.consumo_api.ui.theme.azulboton
 import com.example.consumo_api.ui.theme.colorboton
 
@@ -95,7 +98,9 @@ fun TaskScreen(viewModel: ViewModel_class) {
 
     )
 
-
+    val antonio = FontFamily(
+        Font(R.font.antonio_semibold) // puedes agregar otros estilos como bold, italic, etc.
+    )
 
 
     Column(
@@ -110,7 +115,7 @@ fun TaskScreen(viewModel: ViewModel_class) {
         TextField(
             value = uiState.nombre,
             onValueChange = viewModel::onNombreChange,
-            label = { Text("Nombre",color=Color.White)  },
+            label = { Text("Nombre",color=Color.White, fontFamily = antonio)  },
             colors=customTextFieldColors,
             modifier = Modifier.fillMaxWidth()
         )
@@ -118,7 +123,7 @@ fun TaskScreen(viewModel: ViewModel_class) {
         TextField(
             value = uiState.apellido,
             onValueChange = viewModel::onApellidoChange,
-            label = { Text("Apellido",color=Color.White) },
+            label = { Text("Apellido",color=Color.White, fontFamily = antonio) },
             colors=customTextFieldColors,
             modifier = Modifier.fillMaxWidth()
         )
@@ -126,7 +131,7 @@ fun TaskScreen(viewModel: ViewModel_class) {
         TextField(
             value = uiState.correo,
             onValueChange = viewModel::onCorreoChange,
-            label = { Text("Correo",color=Color.White) },
+            label = { Text("Correo",color=Color.White, fontFamily = antonio) },
             colors=customTextFieldColors,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             modifier = Modifier.fillMaxWidth()
@@ -136,7 +141,7 @@ fun TaskScreen(viewModel: ViewModel_class) {
         TextField(
             value = uiState.tlf,
             onValueChange = viewModel::ontlfChange,
-            label = { Text("Telefono",color=Color.White) },
+            label = { Text("Telefono",color=Color.White, fontFamily = antonio) },
             colors=customTextFieldColors,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             modifier = Modifier.fillMaxWidth()
@@ -149,7 +154,7 @@ fun TaskScreen(viewModel: ViewModel_class) {
                 val numero = it.toIntOrNull() ?: 0 // Convertir String a Int con control de errores
                 viewModel.onnpersonasChange(numero)
             },
-            label = { Text("Número de Personas",color=Color.White) },
+            label = { Text("Número de Personas",color=Color.White, fontFamily = antonio) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             colors=customTextFieldColors,
             modifier = Modifier.fillMaxWidth()
@@ -159,7 +164,7 @@ fun TaskScreen(viewModel: ViewModel_class) {
             value = uiState.fechaini,
             onValueChange = {},
             enabled = false, // evita edición manual
-            label = { Text("Fecha de Inicio Viaje",color=Color.White) },
+            label = { Text("Fecha de Inicio Viaje",color=Color.White, fontFamily = antonio) },
             colors=customTextFieldColors,
             modifier = Modifier
                 .fillMaxWidth()
@@ -171,7 +176,7 @@ fun TaskScreen(viewModel: ViewModel_class) {
             value = uiState.fechafin,
             onValueChange = {},
             enabled = false, // evita edición manual
-            label = { Text("Fecha de Fin Viaje",color=Color.White) },
+            label = { Text("Fecha de Fin Viaje",color=Color.White, fontFamily = antonio) },
             colors=customTextFieldColors,
             modifier = Modifier
                 .fillMaxWidth()
@@ -187,7 +192,7 @@ fun TaskScreen(viewModel: ViewModel_class) {
                 readOnly = true,
                 value = uiState.tipocohete,
                 onValueChange = {},
-                label = { Text("Tipo de Cohete",color=Color.White) },
+                label = { Text("Tipo de Cohete",color=Color.White, fontFamily = antonio) },
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
                 },
@@ -219,7 +224,7 @@ fun TaskScreen(viewModel: ViewModel_class) {
                 readOnly = true,
                 value = uiState.plan,
                 onValueChange = {},
-                label = { Text("Tipo de Plan",color=Color.White) },
+                label = { Text("Tipo de Plan",color=Color.White, fontFamily = antonio) },
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded2)
                 },
@@ -258,7 +263,7 @@ fun TaskScreen(viewModel: ViewModel_class) {
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             Checkbox(checked = embarazada, onCheckedChange = { embarazada = it }, modifier = Modifier.testTag("checkboxEmbarazada"))
-            Text("Embarazada",color=Color.White)
+            Text("Embarazada",color=Color.White, fontFamily = antonio)
 
 
         }
@@ -276,7 +281,7 @@ fun TaskScreen(viewModel: ViewModel_class) {
             disabledContentColor = Color.LightGray
         )
         ) {
-            Text("Enviar")
+            Text("Enviar", fontFamily = antonio)
         }
 
 

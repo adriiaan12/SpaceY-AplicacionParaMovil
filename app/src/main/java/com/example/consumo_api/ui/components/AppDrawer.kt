@@ -22,12 +22,17 @@ import com.example.consumo_api.ui.theme.Purple40
 import com.example.consumo_api.ui.theme.Black
 import com.example.consumo_api.ui.theme.Yellow40
 
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import com.example.consumo_api.R
 
 @Composable
 fun AppDrawer(onDestinationClicked: (String) -> Unit) {
 
 
-
+    val Orbitron = FontFamily(
+        Font(R.font.orbitron_regular) // puedes agregar otros estilos como bold, italic, etc.
+    )
 
     ModalDrawerSheet {
         ModalDrawerSheet(
@@ -37,11 +42,12 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
                 "Menú",
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(16.dp),
-                color = White
+                color = White,
+                fontFamily = Orbitron
             )
 
             NavigationDrawerItem(
-                label = { Text("Inicio") },
+                label = { Text("Inicio", fontFamily = Orbitron) },
                 selected = false,
                 onClick = { onDestinationClicked("home") },
                 icon = { Icon(Icons.Default.Home, contentDescription = "Inicio") },
@@ -55,7 +61,7 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
                 )
             )
             NavigationDrawerItem(
-                label = { Text("Reservas") },
+                label = { Text("Reservas", fontFamily = Orbitron) },
                 selected = false,
                 onClick = { onDestinationClicked("taskIntro") },
                 icon = { Icon(Icons.Default.DateRange, contentDescription = "Reservas") },
@@ -73,7 +79,7 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
 
 
             NavigationDrawerItem(
-                label = { Text("Perfil") },
+                label = { Text("Perfil", fontFamily = Orbitron) },
                 selected = false,
 
                 onClick = {
@@ -94,7 +100,7 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
             )
 
             NavigationDrawerItem(
-                label = { Text("Salas") },
+                label = { Text("Salas", fontFamily = Orbitron) },
                 selected = false,
                 onClick = { onDestinationClicked("Sala") },
                 icon = { Icon(Icons.Default.Info, contentDescription = "Salas") },
@@ -110,7 +116,7 @@ fun AppDrawer(onDestinationClicked: (String) -> Unit) {
             )
 
             NavigationDrawerItem(
-                label = { Text("Ubicacion") },
+                label = { Text("Ubicacion", fontFamily = Orbitron) },
                 selected = false,
                 onClick = { onDestinationClicked("Localizacion") },
                 icon = { Icon(Icons.Default.LocationOn, contentDescription = "Ubicacion") },

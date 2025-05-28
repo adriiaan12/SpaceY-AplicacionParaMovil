@@ -27,6 +27,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import com.example.consumo_api.modules.ViajeViewModel
 import com.example.consumo_api.ui.theme.azulboton
@@ -51,6 +53,10 @@ fun ViajeDetailScreen(viewModel: ViajeViewModel) {
 
         )
 
+    val antonio = FontFamily(
+        Font(R.font.antonio_semibold) // puedes agregar otros estilos como bold, italic, etc.
+    )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -59,7 +65,7 @@ fun ViajeDetailScreen(viewModel: ViajeViewModel) {
         OutlinedTextField(
             value = id,
             onValueChange = { id = it },
-            label = { Text("ID del viaje", color=Color.White) },
+            label = { Text("ID del viaje", color=Color.White, fontFamily = antonio) },
             colors = customTextFieldColors,
             modifier = Modifier.fillMaxWidth()
         )
@@ -74,7 +80,7 @@ fun ViajeDetailScreen(viewModel: ViajeViewModel) {
             disabledContainerColor = Color.Gray,
             disabledContentColor = Color.LightGray
         )) {
-            Text("Buscar")
+            Text("Buscar", fontFamily = antonio)
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -107,17 +113,17 @@ fun ViajeDetailScreen(viewModel: ViajeViewModel) {
                     .fillMaxWidth()
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Id: ${it.id}",color=Color.White)
-                    Text("Nombre: ${it.nombre}",color=Color.White)
-                    Text("Apellido: ${it.apellido}",color=Color.White)
-                    Text("Telefono: ${it.tlf}",color=Color.White)
-                    Text("Correo: ${it.correo}",color=Color.White)
-                    Text("Fecha Inicio: ${it.fechaini}",color=Color.White)
-                    Text("Fecha Fin: ${it.fechafin}",color=Color.White)
-                    Text("Plan: ${it.plan}",color=Color.White)
-                    Text("Tipo de Cohete: ${it.tipocohete}",color=Color.White)
-                    Text("Numero de Personas: ${it.npersonas}",color=Color.White)
-                    Text("Embarazada: ${if (it.embarazada) "Sí" else "No"}",color=Color.White)
+                    Text("Id: ${it.id}",color=Color.White, fontFamily = antonio)
+                    Text("Nombre: ${it.nombre}",color=Color.White, fontFamily = antonio)
+                    Text("Apellido: ${it.apellido}",color=Color.White, fontFamily = antonio)
+                    Text("Telefono: ${it.tlf}",color=Color.White, fontFamily = antonio)
+                    Text("Correo: ${it.correo}",color=Color.White, fontFamily = antonio)
+                    Text("Fecha Inicio: ${it.fechaini}",color=Color.White, fontFamily = antonio)
+                    Text("Fecha Fin: ${it.fechafin}",color=Color.White, fontFamily = antonio)
+                    Text("Plan: ${it.plan}",color=Color.White, fontFamily = antonio)
+                    Text("Tipo de Cohete: ${it.tipocohete}",color=Color.White, fontFamily = antonio)
+                    Text("Numero de Personas: ${it.npersonas}",color=Color.White, fontFamily = antonio)
+                    Text("Embarazada: ${if (it.embarazada) "Sí" else "No"}",color=Color.White, fontFamily = antonio)
                 }
             }
         }

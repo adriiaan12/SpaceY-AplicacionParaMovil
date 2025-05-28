@@ -17,6 +17,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 
 import com.example.consumo_api.modules.ViajeViewModel
 import com.example.consumo_api.modules.RetrofitClient
@@ -39,8 +41,12 @@ fun ViajeDeleteScreen(viewModel: ViajeViewModel) {
         disabledContainerColor = azulboton,
         )
 
+    val antonio = FontFamily(
+        Font(R.font.antonio_semibold) // puedes agregar otros estilos como bold, italic, etc.
+    )
+
     Column(modifier = Modifier.padding(16.dp)) {
-        OutlinedTextField(value = id, onValueChange = { id = it },colors= customTextFieldColors, label = { Text("ID del animal a eliminar", color=Color.White) })
+        OutlinedTextField(value = id, onValueChange = { id = it },colors= customTextFieldColors, label = { Text("ID del viaje a eliminar", color=Color.White, fontFamily = antonio) })
 
         Button(onClick = {
             viewModel.eliminarViaje(id.toInt())
@@ -51,7 +57,7 @@ fun ViajeDeleteScreen(viewModel: ViajeViewModel) {
             disabledContainerColor = Color.Gray,
             disabledContentColor = Color.LightGray
         )) {
-            Text("Eliminar Animal")
+            Text("Eliminar Animal", fontFamily = antonio)
         }
     }
 }

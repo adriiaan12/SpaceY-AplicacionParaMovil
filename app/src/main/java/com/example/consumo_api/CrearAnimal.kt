@@ -27,6 +27,8 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import com.example.consumo_api.ui.theme.azulboton
 import com.example.consumo_api.ui.theme.colorboton
 
@@ -60,23 +62,25 @@ fun ViajeCreateScreen(viewModel: ViajeViewModel) {
 
         )
 
-
+    val antonio = FontFamily(
+        Font(R.font.antonio_semibold) // puedes agregar otros estilos como bold, italic, etc.
+    )
 
 
     Column(modifier = androidx.compose.ui.Modifier.verticalScroll(scrollState)) {
 
-        OutlinedTextField(value = nombre, onValueChange = { nombre = it },colors=customTextFieldColors, label = { Text("Nombre", color=Color.White) })
-        OutlinedTextField(value = apellido, onValueChange = { apellido = it },colors=customTextFieldColors, label = { Text("Apellido", color=Color.White) })
-        OutlinedTextField(value = correo, onValueChange = { correo = it },colors=customTextFieldColors, label = { Text("correo", color=Color.White) })
-        OutlinedTextField(value = tlf, onValueChange = { tlf = it },colors=customTextFieldColors, label = { Text("Teléfono", color=Color.White) })
-        OutlinedTextField(value = fechaini, onValueChange = { fechaini = it },colors=customTextFieldColors, label = { Text("Fecha ini", color=Color.White) })
-        OutlinedTextField(value = fechafin, onValueChange = { fechafin = it },colors=customTextFieldColors, label = { Text("Fecha Fin", color=Color.White) })
-        OutlinedTextField(value = npersonas, onValueChange = { npersonas = it },colors=customTextFieldColors, label = { Text("Personas", color=Color.White) })
-        OutlinedTextField(value = plan, onValueChange = { plan = it },colors=customTextFieldColors, label = { Text("Plan", color=Color.White) })
-        OutlinedTextField(value = tipocohete, onValueChange = { tipocohete = it },colors=customTextFieldColors, label = { Text("Tipo de COhete", color=Color.White) })
+        OutlinedTextField(value = nombre, onValueChange = { nombre = it },colors=customTextFieldColors, label = { Text("Nombre", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = apellido, onValueChange = { apellido = it },colors=customTextFieldColors, label = { Text("Apellido", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = correo, onValueChange = { correo = it },colors=customTextFieldColors, label = { Text("correo", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = tlf, onValueChange = { tlf = it },colors=customTextFieldColors, label = { Text("Teléfono", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = fechaini, onValueChange = { fechaini = it },colors=customTextFieldColors, label = { Text("Fecha ini", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = fechafin, onValueChange = { fechafin = it },colors=customTextFieldColors, label = { Text("Fecha Fin", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = npersonas, onValueChange = { npersonas = it },colors=customTextFieldColors, label = { Text("Personas", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = plan, onValueChange = { plan = it },colors=customTextFieldColors, label = { Text("Plan", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = tipocohete, onValueChange = { tipocohete = it },colors=customTextFieldColors, label = { Text("Tipo de COhete", color=Color.White, fontFamily = antonio) })
         Row(verticalAlignment = Alignment.CenterVertically) {
             Checkbox(checked = embarazada, onCheckedChange = { embarazada = it })
-            Text("Embarazada",color = Color.White)
+            Text("Embarazada",color = Color.White, fontFamily = antonio)
         }
 
         Button(onClick = {
@@ -93,7 +97,7 @@ fun ViajeCreateScreen(viewModel: ViajeViewModel) {
             disabledContainerColor = Color.Gray,
             disabledContentColor = Color.LightGray
         )) {
-            Text("Crear Animal")
+            Text("Crear Viaje", fontFamily = antonio)
         }
     }
 }

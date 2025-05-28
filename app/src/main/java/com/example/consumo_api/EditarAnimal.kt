@@ -25,6 +25,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import com.example.consumo_api.ui.theme.azulboton
 
 
@@ -59,22 +61,24 @@ fun ViajeUpdateScreen(viewModel: ViajeViewModel) {
 
         )
 
-
+    val antonio = FontFamily(
+        Font(R.font.antonio_semibold) // puedes agregar otros estilos como bold, italic, etc.
+    )
 
     Column(modifier = Modifier.padding(16.dp).verticalScroll(scrollState) ) {
-        OutlinedTextField(value = id, onValueChange = { id = it },colors=customTextFieldColors, label = { Text("ID a actualizar", color=Color.White) })
-        OutlinedTextField(value = nombre, onValueChange = { nombre = it },colors=customTextFieldColors, label = { Text("Nombre", color=Color.White) })
-        OutlinedTextField(value = apellido, onValueChange = { apellido = it },colors=customTextFieldColors, label = { Text("Apellido", color=Color.White) })
-        OutlinedTextField(value = correo, onValueChange = { correo = it },colors=customTextFieldColors, label = { Text("correo", color=Color.White) })
-        OutlinedTextField(value = tlf, onValueChange = { tlf = it },colors=customTextFieldColors, label = { Text("Teléfono", color=Color.White) })
-        OutlinedTextField(value = fechaini, onValueChange = { fechaini = it },colors=customTextFieldColors, label = { Text("Fecha ini", color=Color.White) })
-        OutlinedTextField(value = fechafin, onValueChange = { fechafin = it },colors=customTextFieldColors, label = { Text("Fecha Fin", color=Color.White) })
-        OutlinedTextField(value = npersonas, onValueChange = { npersonas = it },colors=customTextFieldColors, label = { Text("Personas", color=Color.White) })
-        OutlinedTextField(value = plan, onValueChange = { plan = it },colors=customTextFieldColors, label = { Text("Plan", color=Color.White) })
-        OutlinedTextField(value = tipocohete, onValueChange = { tipocohete = it },colors=customTextFieldColors, label = { Text("Tipo de Cohete", color=Color.White) })
+        OutlinedTextField(value = id, onValueChange = { id = it },colors=customTextFieldColors, label = { Text("ID a actualizar", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = nombre, onValueChange = { nombre = it },colors=customTextFieldColors, label = { Text("Nombre", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = apellido, onValueChange = { apellido = it },colors=customTextFieldColors, label = { Text("Apellido", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = correo, onValueChange = { correo = it },colors=customTextFieldColors, label = { Text("correo", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = tlf, onValueChange = { tlf = it },colors=customTextFieldColors, label = { Text("Teléfono", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = fechaini, onValueChange = { fechaini = it },colors=customTextFieldColors, label = { Text("Fecha ini", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = fechafin, onValueChange = { fechafin = it },colors=customTextFieldColors, label = { Text("Fecha Fin", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = npersonas, onValueChange = { npersonas = it },colors=customTextFieldColors, label = { Text("Personas", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = plan, onValueChange = { plan = it },colors=customTextFieldColors, label = { Text("Plan", color=Color.White, fontFamily = antonio) })
+        OutlinedTextField(value = tipocohete, onValueChange = { tipocohete = it },colors=customTextFieldColors, label = { Text("Tipo de Cohete", color=Color.White, fontFamily = antonio) })
         Row(verticalAlignment = Alignment.CenterVertically) {
             Checkbox(checked = embarazada, onCheckedChange = { embarazada = it })
-            Text("Embarazada",color = Color.White)
+            Text("Embarazada",color = Color.White, fontFamily = antonio)
         }
 
         Button(onClick = {
@@ -82,7 +86,7 @@ fun ViajeUpdateScreen(viewModel: ViajeViewModel) {
             viewModel.editarViaje(id.toInt(), viaje)
             Toast.makeText(context, "Viaje editado correctamente", Toast.LENGTH_SHORT).show()
         }) {
-            Text("Actualizar Animal")
+            Text("Actualizar Viaje", fontFamily = antonio)
         }
     }
 }

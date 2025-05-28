@@ -10,6 +10,10 @@ import androidx.compose.ui.unit.dp
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.*
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import com.example.consumo_api.R
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -20,6 +24,14 @@ fun PantallaLocalizacion() {
     val cameraPositionState = rememberCameraPositionState {
         position = com.google.android.gms.maps.model.CameraPosition.fromLatLngZoom(estacion, 16f)
     }
+
+    val Orbitron = FontFamily(
+        Font(R.font.orbitron_regular) // puedes agregar otros estilos como bold, italic, etc.
+    )
+
+    val antonio = FontFamily(
+        Font(R.font.antonio_semibold) // puedes agregar otros estilos como bold, italic, etc.
+    )
 
     Column(
         modifier = Modifier
@@ -41,12 +53,13 @@ fun PantallaLocalizacion() {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(
                     text = "Descripción",
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleMedium,
+                    fontFamily = Orbitron
                 )
                 Spacer(Modifier.height(8.dp))
                 Text("El Centro Espacial de Guayana (CSG) es el puerto espacial europeo situado en Kourou, en la Guayana Francesa, " +
                         "un territorio de ultramar de Francia en América del Sur. Inaugurado en 1968, es operado por el Centro Nacional de " +
-                        "Estudios Espaciales (CNES) en colaboración con la Agencia Espacial Europea (ESA) y Arianespace.")
+                        "Estudios Espaciales (CNES) en colaboración con la Agencia Espacial Europea (ESA) y Arianespace.", fontFamily = antonio)
 
             }
         }
@@ -56,7 +69,8 @@ fun PantallaLocalizacion() {
         Text(
             text = "Mapa interactivo",
             style = MaterialTheme.typography.titleLarge,
-            color = Color.White
+            color = Color.White,
+            fontFamily = Orbitron
         )
 
         Card(

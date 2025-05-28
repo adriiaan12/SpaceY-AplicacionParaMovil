@@ -20,7 +20,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+import com.example.consumo_api.R
 import com.example.consumo_api.modules.Viaje
 import com.example.consumo_api.modules.ViajeViewModel
 import com.example.consumo_api.generarPdf
@@ -31,6 +34,9 @@ import com.example.consumo_api.ui.theme.colorboton
 fun ListaViajes(viewModel: ViajeViewModel = ViajeViewModel()) {
     val viajes by viewModel.viajes.collectAsState()
     val contexto = LocalContext.current
+    val antonio = FontFamily(
+        Font(R.font.antonio_semibold) // puedes agregar otros estilos como bold, italic, etc.
+    )
 
     LaunchedEffect(Unit) {
         viewModel.obtenerViajes()
@@ -49,17 +55,17 @@ fun ListaViajes(viewModel: ViajeViewModel = ViajeViewModel()) {
                     .fillMaxWidth()
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Id: ${viaje.id}",color=Color.White)
-                    Text("Nombre: ${viaje.nombre}",color=Color.White)
-                    Text("Apellido: ${viaje.apellido}",color=Color.White)
-                    Text("Telefono: ${viaje.tlf}",color=Color.White)
-                    Text("Correo: ${viaje.correo}",color=Color.White)
-                    Text("Fecha Inicio: ${viaje.fechaini}",color=Color.White)
-                    Text("Fecha Fin: ${viaje.fechafin}",color=Color.White)
-                    Text("Plan: ${viaje.plan}",color=Color.White)
-                    Text("Tipo de Cohete: ${viaje.tipocohete}",color=Color.White)
-                    Text("Numero de Personas: ${viaje.npersonas}",color=Color.White)
-                    Text("Embarazada: ${if (viaje.embarazada) "Sí" else "No"}",color=Color.White)
+                    Text("Id: ${viaje.id}",color=Color.White, fontFamily = antonio)
+                    Text("Nombre: ${viaje.nombre}",color=Color.White, fontFamily = antonio)
+                    Text("Apellido: ${viaje.apellido}",color=Color.White, fontFamily = antonio)
+                    Text("Telefono: ${viaje.tlf}",color=Color.White, fontFamily = antonio)
+                    Text("Correo: ${viaje.correo}",color=Color.White, fontFamily = antonio)
+                    Text("Fecha Inicio: ${viaje.fechaini}",color=Color.White, fontFamily = antonio)
+                    Text("Fecha Fin: ${viaje.fechafin}",color=Color.White, fontFamily = antonio)
+                    Text("Plan: ${viaje.plan}",color=Color.White, fontFamily = antonio)
+                    Text("Tipo de Cohete: ${viaje.tipocohete}",color=Color.White, fontFamily = antonio)
+                    Text("Numero de Personas: ${viaje.npersonas}",color=Color.White, fontFamily = antonio)
+                    Text("Embarazada: ${if (viaje.embarazada) "Sí" else "No"}",color=Color.White, fontFamily = antonio)
                 }
             }
         }
@@ -79,7 +85,7 @@ fun ListaViajes(viewModel: ViajeViewModel = ViajeViewModel()) {
                     disabledContentColor = Color.LightGray
                 )
             ) {
-                Text("Exportar a PDF")
+                Text("Exportar a PDF", fontFamily = antonio)
             }
         }
     }

@@ -39,7 +39,8 @@ import com.example.consumo_api.R // Asegúrate que el paquete coincide con el tu
 
 import com.example.consumo_api.ui.AnimalTabLayout
 
-
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,6 +53,10 @@ fun MainScreen() {
     // Obtener ruta actual
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+
+    val Orbitron = FontFamily(
+        Font(R.font.orbitron_regular) // puedes agregar otros estilos como bold, italic, etc.
+    )
 
     Box(modifier = Modifier
         .fillMaxSize()
@@ -99,7 +104,8 @@ fun MainScreen() {
                                     "Localizacion" -> "Localización"
                                     else -> "Mi App"
                                 },
-                                        color = Color.White
+                                        color = Color.White,
+                                        fontFamily = Orbitron
                             )
                         },
                         navigationIcon = {

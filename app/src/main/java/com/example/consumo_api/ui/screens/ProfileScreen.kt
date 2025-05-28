@@ -21,6 +21,9 @@ import com.example.consumo_api.ViajeUpdateScreen
 import com.example.consumo_api.ViajePatchScreen
 import com.example.consumo_api.ViajeDeleteScreen
 import com.example.consumo_api.modules.Viaje
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import com.example.consumo_api.R
 
 
 
@@ -30,13 +33,17 @@ fun AnimalTabLayout(viewModel: ViajeViewModel = ViajeViewModel()) {
     val tabs = listOf("Listar", "Buscar", "Crear", "Actualizar", "Parcial", "Eliminar")
     var selectedTab by remember { mutableStateOf(0) }
 
+    val antonio = FontFamily(
+        Font(R.font.antonio_semibold) // puedes agregar otros estilos como bold, italic, etc.
+    )
+
     Column {
         TabRow(selectedTabIndex = selectedTab,containerColor = Color.Black, contentColor =  Color.White) {
             tabs.forEachIndexed { index, title ->
                 Tab(
                     selected = selectedTab == index,
                     onClick = { selectedTab = index },
-                    text = { Text(title) },
+                    text = { Text(title, fontFamily = antonio) },
 
                 )
 
